@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أمير نبيل | Portfolio</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Google Fonts: Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-deep-blue: #020b1c;
+            --bg-card-blue: #0a192f;
+            --neon-blue: #00f2fe;
+            --neon-secondary: #4facfe;
+            --text-light: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-deep-blue);
+            color: var(--text-light);
+            font-family: 'Cairo', sans-serif;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(0, 242, 254, 0.15) 0%, transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(79, 172, 254, 0.15) 0%, transparent 45%);
+            background-attachment: fixed;
+            font-size: 1.15rem;
+        }
+
+        /* شريط التمرير */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep-blue); }
+        ::-webkit-scrollbar-thumb { background: var(--neon-secondary); border-radius: 5px; }
+
+        /* Navbar */
+        .navbar {
+            background: rgba(2, 11, 28, 0.98) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid rgba(0, 242, 254, 0.3);
+        }
+        .navbar-brand img {
+            max-height: 45px;
+            filter: drop-shadow(0 0 10px rgba(0, 242, 254, 0.8));
+        }
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 700;
+            font-size: 1.15rem;
+            transition: 0.3s;
+            margin: 0 5px;
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--neon-blue) !important;
+            text-shadow: 0 0 12px rgba(0, 242, 254, 0.9);
+        }
+
+        /* البطاقات */
+        .custom-card {
+            background-color: var(--bg-card-blue);
+            border: 2px solid rgba(0, 242, 254, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            transition: all 0.4s ease;
+        }
+        .custom-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 15px 40px rgba(0, 242, 254, 0.5);
+        }
+
+        /* تدرج النصوص */
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, var(--neon-blue) 40%, var(--neon-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
+        }
+        .hero-logo {
+            max-width: 100%;
+            max-height: 420px;
+            filter: drop-shadow(0 0 35px rgba(0, 242, 254, 0.6));
+            animation: floating 4s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+
+        /* الأزرار */
+        .btn-neon {
+            background: linear-gradient(135deg, var(--neon-blue), var(--neon-secondary));
+            color: #020b1c;
+            border: none;
+            padding: 14px 38px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+            transition: 0.3s;
+        }
+        .btn-neon:hover {
+            color: #020b1c;
+            box-shadow: 0 0 35px rgba(0, 242, 254, 0.9);
+            transform: scale(1.05);
+        }
+        .btn-outline-neon {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--neon-blue);
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .btn-outline-neon:hover {
+            background: var(--neon-blue);
+            color: #020b1c;
+            box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
+        }
+
+        /* عناوين الأقسام */
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 50px;
+            font-weight: 900;
+            font-size: 2.5rem;
+            color: #ffffff;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 70%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--neon-blue), transparent);
+            bottom: -12px;
+            right: 15%;
+            border-radius: 3px;
+        }
+
+        /* مربعات الإنجازات والدراسة */
+        .achievement-box {
+            background: #020b1c;
+            border: 2px solid rgba(0, 242, 254, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .achievement-box:hover {
+            border-color: var(--neon-blue);
+            transform: translateY(-5px);
+            background: #0a192f;
+        }
+
+        /* أيقونات التواصل */
+        .contact-icon-box {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            line-height: 60px;
+            text-align: center;
+            background: #020b1c;
+            color: var(--neon-blue);
+            border-radius: 50%;
+            font-size: 1.4rem;
+            border: 2px solid rgba(0, 242, 254, 0.4);
+            transition: 0.3s;
+        }
+        .contact-card-item:hover .contact-icon-box {
+            background: var(--neon-blue);
+            color: #020b1c;
+            box-shadow: 0 0 25px var(--neon-blue);
+            transform: rotate(360deg);
+        }
+
+        /* حقول الإدخال */
+        .form-control {
+            background: #020b1c;
+            border: 2px solid rgba(0, 242, 254, 0.4);
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 14px;
+            font-size: 1.1rem;
+        }
+        .form-control:focus {
+            background: #020b1c;
+            border-color: var(--neon-blue);
+            color: #ffffff;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+        }
+        .form-control::placeholder { color: #94a3b8; }
+
+        footer {
+            background: #01060f;
+            border-top: 2px solid rgba(0, 242, 254, 0.3);
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbarMain">
+
+    <!-- Navbar -->
+    <nav id="navbarMain" class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-3" href="#">
+                <img src="../مشروع/الصور/ttt.jpeg" alt="Amir Nabil">
+                <span class="fw-bold fs-3 text-gradient">أمير نبيل</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto text-center py-2 py-lg-0 gap-3">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">الرئيسية</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">عني وإنجازاتي</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">المهارات</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">الأعمال</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">التواصل</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <span class="badge bg-dark border border-info text-info px-4 py-2 rounded-pill mb-4 fs-5 shadow">
+                        <i class="fa-solid fa-code me-2"></i> Fullstack Web Developer
+                    </span>
+                    <h1 class="display-3 fw-black mb-4 text-gradient">أهلاً بك، أنا أمير نبيل</h1>
+                    <p class="lead mb-4 fs-4 lh-lg text-white" style="max-width: 650px;">
+                        مطور واجهات برمجية شغوف بتحويل الأفكار إلى مواقع ويب تفاعلية، بتصميم فخم، أداء فائق السرعة، وتجاوب تام مع كافة الشاشات والأجهزة.
+                    </p>
+                    
+                    <!-- إظهار معلومات التواصل في واجهة الصفحة -->
+                    <div class="d-flex flex-wrap gap-4 mb-4 text-info fw-bold fs-5 justify-content-center justify-content-lg-start">
+                        <span><i class="fa-solid fa-envelope me-2"></i>amirnabil610@gmil.com</span>
+                        <span><i class="fa-solid fa-phone me-2" dir="ltr"></i>01155459894</span>
+                    </div>
+
+                    <div class="d-flex gap-3 justify-content-center justify-content-lg-start flex-wrap">
+                        <a href="#projects" class="btn btn-neon"><i class="fa-solid fa-briefcase me-2"></i>استعرض أعمالي</a>
+                        <a href="#contact" class="btn btn-outline-neon"><i class="fa-solid fa-paper-plane me-2"></i>تواصل معي</a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <img src="../مشروع/الصور/ttt.jpeg" alt="شعار أمير نبيل" class="hero-logo img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-5">
+        <div class="container py-4">
+            <div class="text-center">
+                <h2 class="section-title">عني وإنجازاتي ودراستي</h2>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="custom-card p-4 p-md-5">
+                        <div class="row align-items-center gy-4">
+                            <div class="col-md-4 text-center">
+                                <div class="p-4 border border-info rounded-circle d-inline-block bg-dark shadow-lg">
+                                    <i class="fa-solid fa-graduation-cap fa-5x text-gradient"></i>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <h3 class="text-gradient mb-3 fs-2 fw-bold">من هو أمير نبيل؟</h3>
+                                <p class="fs-5 lh-lg mb-3 text-white">
+                                    أنا **أمير نبيل**، مطور ويب متخصص في بناء واجهات المستخدم (Frontend Developer). أؤمن بأن التصميم الراقي والكود المنظم هما أساس أي مشروع رقمي ناجح.
+                                </p>
+                                <div class="p-3 bg-dark border border-info border-opacity-50 rounded-3 mt-3">
+                                    <h5 class="text-info fw-bold mb-1"><i class="fa-solid fa-university me-2"></i>الخلفية الدراسية:</h5>
+                                    <p class="m-0 text-white fs-5">طالب في <strong>الفرقة الرابعة في معهد الدلتا العالي للحاسبات والمعلومات بالمنصورة</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-4 mt-4 pt-4 border-top border-info border-opacity-25">
+                            <div class="col-md-4">
+                                <div class="achievement-box">
+                                    <i class="fa-solid fa-code-commit fa-2x text-info mb-2"></i>
+                                    <h4 class="fw-bold fs-4 text-white">كود نظيف</h4>
+                                    <p class="small m-0 text-white">التزام تام بمعايير الويب الحديثة والموثوقة.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="achievement-box">
+                                    <i class="fa-solid fa-mobile-screen-button fa-2x text-info mb-2"></i>
+                                    <h4 class="fw-bold fs-4 text-white">متجاوب 100%</h4>
+                                    <p class="small m-0 text-white">توافق تام مع الهواتف والكمبيوتر.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="achievement-box">
+                                    <i class="fa-solid fa-rocket fa-2x text-info mb-2"></i>
+                                    <h4 class="fw-bold fs-4 text-white">أداء فائق</h4>
+                                    <p class="small m-0 text-white">تحسين سرعة تحميل الصفحات بسلاسة.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+        <div class="container py-4">
+            <div class="text-center">
+                <h2 class="section-title">المهارات التقنية</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-6 col-md-3">
+                    <div class="custom-card p-4 text-center">
+                        <i class="fa-brands fa-html5 fa-4x text-info mb-3"></i>
+                        <h4 class="fw-bold fs-4 text-white">HTML5</h4>
+                        <span class="text-white">هيكلة صفحات الويب</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="custom-card p-4 text-center">
+                        <i class="fa-brands fa-css3-alt fa-4x text-primary mb-3"></i>
+                        <h4 class="fw-bold fs-4 text-white">CSS3</h4>
+                        <span class="text-white">التنسيق والتصميم الجمالي</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="custom-card p-4 text-center">
+                        <i class="fa-brands fa-bootstrap fa-4x mb-3" style="color: #a855f7;"></i>
+                        <h4 class="fw-bold fs-4 text-white">Bootstrap 5</h4>
+                        <span class="text-white">التصميم المتجاوب السريع</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="custom-card p-4 text-center">
+                        <i class="fa-brands fa-github fa-4x text-light mb-3"></i>
+                        <h4 class="fw-bold fs-4 text-white">Git & GitHub</h4>
+                        <span class="text-white">إدارة النسخ والمشاريع</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5">
+        <div class="container py-4">
+            <div class="text-center">
+                <h2 class="section-title">سابقة الأعمال</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="custom-card h-100 d-flex flex-column overflow-hidden">
+                        <div class="p-4 bg-dark text-center border-bottom border-info border-opacity-25">
+                            <i class="fa-solid fa-cart-shopping fa-3x text-gradient my-3"></i>
+                        </div>
+                        <div class="p-4 flex-grow-1">
+                            <h4 class="fw-bold mb-3 fs-3 text-white">متجر إلكتروني احترافي</h4>
+                            <p class="fs-5 text-white">منصة عرض منتجات متجاوبة بالكامل مع تصميم عصري وسلة مشتريات سلسة.</p>
+                            <div class="d-flex gap-2 mt-3 flex-wrap">
+                                <span class="badge bg-info bg-opacity-20 text-info p-2">HTML/CSS</span>
+                                <span class="badge bg-info bg-opacity-20 text-info p-2">Bootstrap</span>
+                            </div>
+                        </div>
+                        <div class="p-3 border-top border-info border-opacity-25 d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn-outline-neon px-3 py-2">معاينة</a>
+                            <a href="#" class="btn btn-sm btn-neon px-3 py-2"><i class="fa-brands fa-github me-1"></i> كود المصدر</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-card h-100 d-flex flex-column overflow-hidden">
+                        <div class="p-4 bg-dark text-center border-bottom border-info border-opacity-25">
+                            <i class="fa-solid fa-laptop-code fa-3x text-gradient my-3"></i>
+                        </div>
+                        <div class="p-4 flex-grow-1">
+                            <h4 class="fw-bold mb-3 fs-3 text-white">لوحة تحكم إدارية</h4>
+                            <p class="fs-5 text-white">لوحة تحكم ذكية تعرض البيانات والإحصائيات بتصميم ليلي فاخر (Dark Mode).</p>
+                            <div class="d-flex gap-2 mt-3 flex-wrap">
+                                <span class="badge bg-info bg-opacity-20 text-info p-2">Bootstrap 5</span>
+                                <span class="badge bg-info bg-opacity-20 text-info p-2">UI/UX</span>
+                            </div>
+                        </div>
+                        <div class="p-3 border-top border-info border-opacity-25 d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn-outline-neon px-3 py-2">معاينة</a>
+                            <a href="#" class="btn btn-sm btn-neon px-3 py-2"><i class="fa-brands fa-github me-1"></i> كود المصدر</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="custom-card h-100 d-flex flex-column overflow-hidden">
+                        <div class="p-4 bg-dark text-center border-bottom border-info border-opacity-25">
+                            <i class="fa-solid fa-id-badge fa-3x text-gradient my-3"></i>
+                        </div>
+                        <div class="p-4 flex-grow-1">
+                            <h4 class="fw-bold mb-3 fs-3 text-white">موقع سيرة ذاتية</h4>
+                            <p class="fs-5 text-white">موقع شخصي متكامل يعرض المهارات والخبرات بأسلوب تفاعلي جذاب.</p>
+                            <div class="d-flex gap-2 mt-3 flex-wrap">
+                                <span class="badge bg-info bg-opacity-20 text-info p-2">HTML5</span>
+                                <span class="badge bg-info bg-opacity-20 text-info p-2">CSS3</span>
+                            </div>
+                        </div>
+                        <div class="p-3 border-top border-info border-opacity-25 d-flex justify-content-between">
+                            <a href="#" class="btn btn-sm btn-outline-neon px-3 py-2">معاينة</a>
+                            <a href="#" class="btn btn-sm btn-neon px-3 py-2"><i class="fa-brands fa-github me-1"></i> كود المصدر</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact
